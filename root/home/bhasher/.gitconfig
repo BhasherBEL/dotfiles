@@ -1,0 +1,8 @@
+[include]
+        path = ~/Documents/sync/.config/git/.gitconfig
+[safe]
+	directory = /opt/flutter
+[core]
+	excludesfile = /home/bhasher/.gitignore_global
+[init]
+        defaultBranch = master
