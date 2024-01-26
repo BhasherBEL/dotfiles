@@ -1,0 +1,50 @@
+[credential]
+	helper = bw
+[core]
+	editor = vim
+	autocrlf = input
+
+[user]
+        email = git@bhasher.com
+        name = Brieuc Dubois
+[commit]
+	gpgsign = false
+[init]
+	defaultBranch = master
+[gpg]
+    program = gpg
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+[help]
+	autocorrect = 30
+[alias]
+	graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold blue)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  logdoga = log --decorate --oneline --graph --all
+  s = status
+  d = diff
+[push]
+    default = simple
+
+[includeIf "hasconfig:remote.*.url:https://git.bhasher.com/**"]
+	path = .gitconfig-git.bhasher.com
+
+[includeIf "hasconfig:remote.*.url:https://git.licolas.net/**"]
+	path = .gitconfig-git.licolas.net
+
+[includeIf "hasconfig:remote.*.url:https://forge.uclouvain.be/**"]
+	path = .gitconfig-forge.uclouvain.be
+
+[includeIf "hasconfig:remote.*.url:git@forge.uclouvain.be:**"]
+	path = .gitconfig-forge.uclouvain.be
+
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+	path = .gitconfig-github.com
+
+[includeIf "hasconfig:remote.*.url:git@github.com:**"]
+	path = .gitconfig-github.com
+
+[includeIf "hasconfig:remote.*.url:https://gitlab.com/**"]
+	path = .gitconfig-gitlab.com
