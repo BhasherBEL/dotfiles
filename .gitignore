@@ -1,3 +1,5 @@
 key
 root/etc/wireguard/*.conf
 .smb
+root/home/bhasher/.ssh/*
+!root/home/bhasher/.ssh/*.enc
