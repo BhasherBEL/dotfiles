@@ -3,6 +3,11 @@
 src_dir="../root"
 dst_dir="/"
 
+if [ "$EUID" -ne 0 ]; then
+	echo "Please run as root"
+	exit
+fi
+
 amount=0
 
 function create_hard_links() {
