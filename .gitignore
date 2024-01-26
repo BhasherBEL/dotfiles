@@ -3,3 +3,5 @@ root/etc/wireguard/*.conf
 .smb
 root/home/bhasher/.ssh/*
 !root/home/bhasher/.ssh/*.enc
+root/home/bhasher/.gnupg/pubkeys/*
+!root/home/bhasher/.gnupg/pubkeys/*.enc
