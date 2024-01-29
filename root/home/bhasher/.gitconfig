@@ -6,3 +6,5 @@
 	excludesfile = ~/.config/custom/git/.gitignore_global
 [init]
         defaultBranch = master
+[pull]
+	rebase = true
