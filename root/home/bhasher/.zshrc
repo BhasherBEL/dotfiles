@@ -19,6 +19,8 @@ export EDITOR='vim'
 # Custom
 
 alias ip="ip -c"
+alias ls="ls -A"
+alias sl="sl -adew5F"
 
 cat() {
     for arg in "$@"; do
