@@ -1,3 +1,8 @@
 swaync &
 
-waybar &
+waybar 2>&1 &
+
+nm-applet --indicator &
+
+wl-paste --type text --watch cliphist store
+wl-paste --type image --watch cliphist store
