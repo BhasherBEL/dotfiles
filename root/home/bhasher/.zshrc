@@ -31,3 +31,5 @@ cat() {
         fi
     done
 }
+
+unsetopt BEEP
