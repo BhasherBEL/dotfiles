@@ -19,7 +19,7 @@ export EDITOR='vim'
 # Custom
 
 alias ip="ip -c"
-alias ls="ls -A"
+alias ls="ls -A --color"
 alias sl="sl -adew5F"
 
 cat() {

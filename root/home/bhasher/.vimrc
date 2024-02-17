@@ -10,5 +10,6 @@
 :set tabstop=8
 :set softtabstop=0
 :set splitright
+:set belloff=all
 
 :command Vterm vertical terminal
