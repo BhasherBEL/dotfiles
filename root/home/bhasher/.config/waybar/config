@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["pulseaudio", "custom/VPN", "network", "custom/bandwidth", "cpu", "memory", "battery", "tray", "clock"],
+    "modules-right": ["pulseaudio", "custom/VPN", "network", "custom/bandwidth", "cpu", "memory", "battery", "tray", "custom/notifications", "clock"],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -54,7 +54,7 @@
     },
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}) ",
+        "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-disconnected": "Disconnected ⚠"
     },
@@ -64,8 +64,9 @@
     "custom/VPN": {
         "format": "{}",
         "interval": 5,
-        "max-length": 20,
-        "exec": "$HOME/.config/waybar/scripts/vpn"
+        "return-type": "json",
+        "exec": "$HOME/.config/waybar/scripts/vpn",
+        "on-click": "$HOME/.config/waybar/scripts/vpn-toggle"
     },
     "pulseaudio": {
         //"scroll-step": 1,
@@ -83,11 +84,24 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/spotify": {
-        "format": " {}",
-        "max-length": 40,
-        "interval": 30, // Remove this if your script is endless and write in loop
-        "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
-        "exec-if": "pgrep spotify"
-    }
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
 }

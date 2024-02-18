@@ -44,7 +44,7 @@ def main():
     num_left = "<span font='NotoSansMono'>"
     num_right = "</span>"
     fmt_str = (
-        f"{rx_icon}{num_left}{{rx}}{{unit_suffix}}{num_right}  "
+        f"{num_left}{{rx}}{{unit_suffix}} {rx_icon}{num_right}  "
         f"{tx_icon}{num_left}{{tx}}{{unit_suffix}}{num_right}"
     )
     unit_suffix = ""

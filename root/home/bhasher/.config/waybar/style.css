@@ -39,16 +39,14 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #custom-VPN, #custom-bandwidth {
     padding: 0 3px;
     margin: 0 2px;
+    border-left: 1px solid #999;
 }
 
 #clock {
     font-weight: bold;
-}
-
-#battery {
 }
 
 #battery icon {
@@ -56,6 +54,7 @@ window#waybar {
 }
 
 #battery.charging {
+  color: orange;
 }
 
 @keyframes blink {
@@ -74,29 +73,12 @@ window#waybar {
     animation-direction: alternate;
 }
 
-#cpu {
+#custom-VPN {
+  /*padding: 5px 10px;*/
 }
 
-#memory {
-}
-
-#network {
-}
-
-#network.disconnected {
-    background: #f53c3c;
-}
-
-#pulseaudio {
-}
-
-#pulseaudio.muted {
-}
-
-#custom-spotify {
-    color: rgb(102, 220, 105);
-}
-
-#tray {
+#custom-VPN.down, #network.disconnected {
+  border-radius: 5px;
+  background-color: #f33;
 }
 
