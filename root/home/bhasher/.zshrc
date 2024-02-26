@@ -21,6 +21,7 @@ export EDITOR='vim'
 alias ip="ip -c"
 alias ls="ls -A --color"
 alias sl="sl -adew5F"
+alias ccat="pygmentize -g"
 
 cat() {
     for arg in "$@"; do
