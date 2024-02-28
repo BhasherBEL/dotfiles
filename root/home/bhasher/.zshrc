@@ -34,3 +34,5 @@ cat() {
 }
 
 unsetopt BEEP
+
+alias beep="sh -c 'speaker-test -t sine -f 600 > /dev/null & sleep .5 && pkill speaker-test'"
