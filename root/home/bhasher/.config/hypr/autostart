@@ -16,3 +16,5 @@ LOCK="swaylock --screenshots --effect-blur 7x5 --indicator --clock | xargs hyprc
 
 swayidle -w timeout 600 "$LOCK" before-sleep "$LOCK" &
 swayidle -w timeout 1200 "systemctl hibernate" &
+
+/usr/lib/polkit-kde-authentication-agent-1 &
