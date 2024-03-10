@@ -1,0 +1,42 @@
+set nocompatible
+
+set ignorecase
+set showmatch
+set hlsearch
+set incsearch
+
+set tabstop=2
+set softtabstop=0
+set shiftwidth=2
+set autoindent
+set noexpandtab
+
+set number
+set relativenumber
+
+set wildmode=longest,list
+
+syntax on
+
+" set clipboard=unnamedplus
+
+" set spell
+" set spelllang=en ",fr
+
+set ttyfast
+set noswapfile
+set mouse=a
+
+call plug#begin()
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'github/copilot.vim'
+
+call plug#end()
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+let g:ranger_replace_netrw = 1

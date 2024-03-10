@@ -12,7 +12,7 @@ plugins=(git sudo zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -22,6 +22,8 @@ alias ip="ip -c"
 alias ls="ls -A --color"
 alias sl="sl -adew5F"
 alias ccat="pygmentize -g"
+alias beep="sh -c 'speaker-test -t sine -f 600 > /dev/null & sleep .5 && pkill speaker-test'"
+alias nv="nvim"
 
 cat() {
     for arg in "$@"; do
