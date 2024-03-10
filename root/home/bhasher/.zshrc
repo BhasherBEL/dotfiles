@@ -37,4 +37,24 @@ cat() {
 
 unsetopt BEEP
 
-alias beep="sh -c 'speaker-test -t sine -f 600 > /dev/null & sleep .5 && pkill speaker-test'"
+
+SCONFIG_PATH="~/Documents/sync/.config"
+
+alias config_sync="sh -c 'cd $SCONFIG_PATH/scripts && sudo ./sync.sh'"
+
+config_cp() {
+  src_dir=$(realpath "$1")
+  dest_dir="$SCONFIG_PATH/root$src_dir"
+  num_files=$(find "$src_dir" -type f | wc -l)
+
+  read "REPLY?About to copy $num_files files from $src_dir -> $dest_dir. Proceed? (Y/n) "
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    mkdir -p "$(dirname "$dest_dir")"
+    cp -R "$src_dir" "$dest_dir"
+    if [ $? -eq 0 ]
+    then
+      echo "OK"
+    fi
+  fi
+}
