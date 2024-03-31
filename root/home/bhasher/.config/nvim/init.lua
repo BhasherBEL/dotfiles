@@ -23,7 +23,7 @@ vim.opt.swapfile = false
 vim.opt.mouse = "a"
 
 vim.opt.spell = true
-vim.opt.spelllang = "en" -- ,fr'
+vim.opt.spelllang = "en,fr"
 vim.api.nvim_set_hl(0, "SpellBad", { ctermbg = 238 })
 
 vim.cmd([[colorscheme desert]])
@@ -59,13 +59,6 @@ require("lazy").setup({
 	{
 		-- Copilot
 		"github/copilot.vim",
-		--config = function()
-		--	require("copilot.vim").setup({
-		--		filetypes = {
-		--			["."] = true,
-		--		}
-		--	})
-		-- end,
 	},
 	{
 		-- Ranger file explorer
@@ -83,8 +76,13 @@ require("lazy").setup({
 		-- Auto pairs
 		"altermo/ultimate-autopair.nvim",
 		event = { "InsertEnter", "CmdlineEnter" },
-		branch = "v0.6", --recommended as each new version will have breaking changes
+		branch = "v0.6",
 		opts = {},
+	},
+	{
+		-- Fuzzy finder
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 })
 
@@ -104,12 +102,31 @@ require("conform").setup({
 		yaml = { "prettier" },
 		toml = { "prettier" },
 		java = { "google-java-format" },
+		c = { "clang-format" },
+		cpp = { "clang-format" },
+		h = { "clang-format" },
 	},
 	format_on_save = {},
 })
 
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "go", "lua", "vim", "vimdoc", "sql", "json", "javascript", "typescript", "svelte", "html", "java", "markdown" },
+	ensure_installed = {
+		"go",
+		"lua",
+		"vim",
+		"vimdoc",
+		"sql",
+		"json",
+		"javascript",
+		"typescript",
+		"svelte",
+		"html",
+		"java",
+		"markdown",
+		"yaml",
+		"c",
+		"cpp",
+	},
 	highlight = {
 		enable = true,
 	},
@@ -118,15 +135,20 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
-
 -- mappings
 vim.keymap.set("i", "<C-Right>", "<Plug>(copilot-accept-word)")
+
 vim.keymap.set(
 	"i",
-	"<CR>",
-	"coc#pum#visible() ? coc#pum#next(1): '<CR>'",
+	"<S-CR>",
+	"coc#pum#visible() ? coc#pum#confirm(): '<S-CR>'",
 	{ noremap = true, silent = true, expr = true }
 )
+vim.keymap.set("i", "<C-Space>", "coc#refresh()", { noremap = true, silent = true, expr = true })
+
+vim.keymap.set("v", "<C-A-c>", '"+y', { noremap = true, silent = true })
+
+vim.keymap.set("n", "ff", require("telescope.builtin").find_files, {})
 
 -- commands
 vim.api.nvim_create_user_command("Day", function(opts)
@@ -136,5 +158,3 @@ end, { nargs = 0 })
 vim.api.nvim_create_user_command("Night", function(opts)
 	vim.cmd([[colorscheme desert]])
 end, { nargs = 0 })
-
--- Abc
